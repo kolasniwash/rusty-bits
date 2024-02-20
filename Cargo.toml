@@ -10,3 +10,7 @@ edition = "2021"
 [[bin]]
 name = 'pass-by-reference-value'
 path = 'pass-by-reference-value/main.rs'
+
+[[bin]]
+name = 'intro-testing'
+path = 'intro-testing/main.rs'
