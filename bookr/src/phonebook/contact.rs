@@ -1,15 +1,14 @@
-
 #[derive(PartialEq, Debug, Clone)]
 pub struct Contact {
     pub name: String,
-    pub phone: String
+    pub phone: String,
 }
 
 impl Contact {
     pub fn new(name: &str, phone: &str) -> Contact {
         Contact {
             name: name.to_string(),
-            phone: phone.to_string()
+            phone: phone.to_string(),
         }
     }
 
@@ -21,7 +20,6 @@ impl Contact {
         self.phone = phone.to_string();
     }
 }
-
 
 #[cfg(test)]
 mod tests {
