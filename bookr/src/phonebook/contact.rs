@@ -1,4 +1,7 @@
+use serde::{Deserialize, Serialize};
+
 #[derive(PartialEq, Debug, Clone)]
+#[derive(Deserialize, Serialize)]
 pub struct Contact {
     pub name: String,
     pub phone: String,

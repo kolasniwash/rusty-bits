@@ -1,9 +1,10 @@
 pub mod contact;
 use contact::Contact;
 use std::collections::HashMap;
+use serde::{Deserialize, Serialize};
 
 #[derive(PartialEq, Debug, Clone)]
-
+#[derive(Deserialize, Serialize)]
 pub struct Phonebook(HashMap<String, Contact>);
 
 impl Phonebook {
