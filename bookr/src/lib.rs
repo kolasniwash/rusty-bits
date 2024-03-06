@@ -14,11 +14,14 @@ pub struct Cli {
 #[derive(Subcommand)]
 pub enum Commands {
     /// Look up a contact's phone number
-    Lookup (LookupArgs),
-    /// Edit a contact's name or number
-    Edit (EditArgs),
+    #[command(arg_required_else_help = true)]
+    Lookup(LookupArgs),
     /// Add a new contact. If you want to update an existing contact use edit.
-    Add (AddArgs)
+    #[command(arg_required_else_help = true)]
+    Add(AddArgs),
+    /// Edit a contact's name or number
+    Edit(EditArgs),
+
 }
 
 #[derive(Args)]
@@ -32,8 +35,28 @@ pub struct AddArgs {
     pub number: String
 }
 
+
 #[derive(Args)]
-pub struct EditArgs {
+// #[command(args_conflicts_with_subcommands = true)]
+pub struct  EditArgs {
+    #[command(subcommand)]
+    pub command: EditCommands
+}
+
+#[derive(Subcommand)]
+pub enum EditCommands {
+    name(EditNameArgs),
+    number(EditNumberArgs)
+}
+
+#[derive(Args)]
+pub struct EditNameArgs {
+    pub name: String,
+    pub new_name: String
+}
+
+#[derive(Args)]
+pub struct EditNumberArgs {
     pub name: String,
     pub number: String
 }
